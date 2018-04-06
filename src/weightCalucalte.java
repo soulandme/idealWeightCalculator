@@ -142,23 +142,25 @@ public class weightCalucalte extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String name, systemOfMeasure;
+        double height, weight;
         name = numberOfName.getText();
         systemOfMeasure = numberOfSystem.getText();
+        height = Double.parseDouble(numberOfHight.getText());
         System.out.print(systemOfMeasure);
-        double hight, weight;
-        if ( systemOfMeasure =="M"  )
-        {
-            // system=="M"
-            hight = Double.parseDouble(numberOfHight.getText());
-            weight = hight * hight *25;
-            numberOfWeight.setText(name +"'s ideal weight is" + weight +"kg" );
-            System.out.print(weight);
-        }
-        else if ( systemOfMeasure == "I")
-        {
-            hight = Double.parseDouble(numberOfHight.getText());
-            weight = hight * hight * 25/703;
-            numberOfWeight.setText(name +"'s ideal weight is" + weight +"pound" );
+        
+        switch(systemOfMeasure)
+            {
+            //if the user is using metric measurements
+            case "M":
+                weight = height * height * 25;
+                numberOfWeight.setText(name + "'s ideal weight is: " + weight + " kgs."); 
+                break;
+            //if the user is using imperial measurements
+            case "I":
+                
+                weight = (height * height) * 25 / 703;
+                numberOfWeight.setText(name + "'s ideal weight is: " + weight+ " lbs."); 
+                break;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
